@@ -1,3 +1,5 @@
+import server from './api';
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -37,6 +39,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/apollo',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -54,4 +57,24 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-}
+  hooks: {
+    render: {
+      async before({
+        nuxt: {
+          server: { app },
+        },
+      }) {
+        await server.applyMiddleware({ app, path: '/api' }); // APOLLO Server
+        console.log(`🚀 ApolloServer ready at /api`);
+      },
+    },
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:3000/api', // APOLLO Client
+      },
+    },
+  },
+};
