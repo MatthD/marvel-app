@@ -20,6 +20,7 @@ export const typeDefs = gql`
 `;
 
 export async function caracters() {
+  console.log('pass in resolver------------');
   const currentTs = Date.now().toString();
   const marvelRequestCaract = await axios.get(`${MARVEL_API_URL}characters`, {
     params: {

@@ -76,5 +76,11 @@ export default {
         httpEndpoint: 'http://localhost:3000/api', // APOLLO Client
       },
     },
+    defaultOptions: {
+      $query: {
+        loadingKey: 'loading',
+        fetchPolicy: 'cache-only',
+      },
+    },
   },
 };
