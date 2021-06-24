@@ -3,7 +3,7 @@
 Just a marvel character list website ;) 
 ## Install
 
-`yarn install`
+`yarn`
 
 ## Start
 `yarn dev`
