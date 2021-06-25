@@ -75,7 +75,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:3000/api', // APOLLO Client
+        httpEndpoint: 'http://localhost:8080/api', // APOLLO Client
       },
     },
     defaultOptions: {
@@ -87,7 +87,7 @@ export default {
   },
 
   server: {
-    port: 3000, // par défaut : 3000
+    port: 8080, // par défaut : 3000
     host: '0.0.0.0', // par défaut : localhost,
     timing: false,
   },
