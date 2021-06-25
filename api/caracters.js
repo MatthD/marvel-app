@@ -15,12 +15,11 @@ export const typeDefs = gql`
     thumbnail: String
   }
   type Query {
-    caracters: [CaracterInfos]
+    caracters(limit: Int = 10, start: Int = 0): [CaracterInfos]
   }
 `;
 
-export async function caracters() {
-  console.log('pass in resolver------------');
+export async function caracters(parent, { limit, start }) {
   const currentTs = Date.now().toString();
   const marvelRequestCaract = await axios.get(`${MARVEL_API_URL}characters`, {
     params: {
@@ -29,6 +28,8 @@ export async function caracters() {
       hash: createHash('md5')
         .update(currentTs + MARVEL_DEV_PRIVATE_KEY + MARVEL_DEV_PUBLIC_KEY)
         .digest('hex'),
+      limit,
+      offset: start,
     },
   });
   const sanitizedCaracters = getUsefullCaractersInfo(

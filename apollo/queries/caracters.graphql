@@ -1,5 +1,5 @@
-query caracters {
-  caracters {
+query caracters($limit: Int, $start: Int) {
+  caracters(limit: $limit, start: $start) {
     name
     description
     thumbnail

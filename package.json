@@ -23,7 +23,8 @@
     "graphql": "^15.5.1",
     "graphql-tag": "^2.12.4",
     "nuxt": "^2.15.3",
-    "nuxt-buefy": "^0.4.4"
+    "nuxt-buefy": "^0.4.4",
+    "vue-infinite-scroll": "^2.0.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
