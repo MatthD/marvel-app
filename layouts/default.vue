@@ -24,7 +24,7 @@
 
     <section class="main-content columns">
       <aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">MCU Caracters</p>
+        <p class="menu-label is-hidden-touch">MCU characters</p>
         <ul class="menu-list">
           <li v-for="(item, key) of items" :key="key">
             <nuxt-link :to="item.to" exact-active-class="is-active">
@@ -52,9 +52,9 @@ export default {
           to: { name: 'index' },
         },
         {
-          title: 'Caracter List',
+          title: 'Character list',
           icon: 'lightbulb',
-          to: { name: 'caracters' },
+          to: { name: 'characters' },
         },
       ],
     };

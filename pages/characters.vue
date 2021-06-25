@@ -1,12 +1,12 @@
 <template>
   <div v-infinite-scroll="showMore" infinite-scroll-distance="30">
     <section
-      class="columns is-multiline caracters"
+      class="columns is-multiline characters"
       :check-infinite-scroll="true"
     >
       <div
-        v-for="caracter in caracters"
-        :key="caracter.id"
+        v-for="character in characters"
+        :key="character.id"
         class="card column is-full-mobile is-one-quarter-desktop"
         aria-id="contentIdForA11y3"
       >
@@ -16,18 +16,18 @@
           aria-controls="contentIdForA11y3"
         >
           <p class="card-header-title">
-            <template>{{ caracter.name }}</template>
+            <template>{{ character.name }}</template>
           </p>
           <img
-            :src="caracter.thumbnail"
-            :alt="caracter.name"
-            class="caracterPicture"
+            :src="character.thumbnail"
+            :alt="character.name"
+            class="characterPicture"
           />
         </div>
         <div class="card-content">
           <div class="content">
             <template>
-              {{ caracter.description || 'no description' }}
+              {{ character.description || 'no description' }}
             </template>
           </div>
         </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { caracters } from '~/apollo/queries/caracters.graphql';
+import { characters } from '~/apollo/queries/characters.graphql';
 
 const limit = 10;
 
@@ -51,8 +51,8 @@ export default {
     };
   },
   apollo: {
-    caracters: {
-      query: caracters,
+    characters: {
+      query: characters,
       prefetch: true,
       fetchPolicy: 'cache-first',
       variables: {
@@ -62,19 +62,19 @@ export default {
     },
   },
   methods: {
-    // Here we will get more caracters on infinite scroll
+    // Here we will get more characters on infinite scroll
     showMore() {
-      // if (!caracters.lenght) return;
+      // if (!characters.lenght) return;
       this.start += 10;
-      this.$apollo.queries.caracters.fetchMore({
+      this.$apollo.queries.characters.fetchMore({
         variables: {
           start: this.start,
           limit: this.limit,
         },
         updateQuery: (previousResult, { fetchMoreResult }) => {
-          const newCaracters = fetchMoreResult.caracters;
+          const newcharacters = fetchMoreResult.characters;
           return {
-            caracters: [...previousResult.caracters, ...newCaracters],
+            characters: [...previousResult.characters, ...newcharacters],
           };
         },
       });
@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style scoped>
-.caracterPicture {
+.characterPicture {
   max-width: 100%;
   overflow: hidden;
 }

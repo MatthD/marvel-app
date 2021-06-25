@@ -1,6 +1,9 @@
 <template>
   <section class="section">
-    <h1>🦸‍♀️ Welcome to the MCU Caracter list 🦸🏽‍♂️</h1>
+    <h1>
+      🦸‍♀️ <br />
+      Welcome to the MCU character list <br />🦸🏽‍♂️
+    </h1>
   </section>
 </template>
 
@@ -13,5 +16,6 @@ export default {
 <style scoped>
 h1 {
   font-size: 70px;
+  text-align: center;
 }
 </style>

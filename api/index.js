@@ -1,10 +1,10 @@
 import { ApolloServer } from 'apollo-server-express';
-import { typeDefs, caracters } from './caracters';
+import { typeDefs, characters } from './characters';
 
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    caracters,
+    characters,
   },
 };
 

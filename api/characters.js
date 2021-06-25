@@ -8,18 +8,18 @@ import {
 } from './config';
 
 export const typeDefs = gql`
-  type CaracterInfos {
+  type characterInfos {
     id: ID!
     name: String!
     description: String!
     thumbnail: String
   }
   type Query {
-    caracters(limit: Int = 10, start: Int = 0): [CaracterInfos]
+    characters(limit: Int = 10, start: Int = 0): [characterInfos]
   }
 `;
 
-export async function caracters(parent, { limit, start }) {
+export async function characters(parent, { limit, start }) {
   const currentTs = Date.now().toString();
   const marvelRequestCaract = await axios.get(`${MARVEL_API_URL}characters`, {
     params: {
@@ -32,14 +32,14 @@ export async function caracters(parent, { limit, start }) {
       offset: start,
     },
   });
-  const sanitizedCaracters = getUsefullCaractersInfo(
+  const sanitizedcharacters = getUsefullcharactersInfo(
     marvelRequestCaract?.data?.data?.results ?? []
   );
-  return sanitizedCaracters;
+  return sanitizedcharacters;
 }
 
-function getUsefullCaractersInfo(listOfCaracters) {
-  return listOfCaracters.map(({ id, name, description, thumbnail }) => ({
+function getUsefullcharactersInfo(listOfcharacters) {
+  return listOfcharacters.map(({ id, name, description, thumbnail }) => ({
     id,
     name,
     description,
