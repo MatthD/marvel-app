@@ -1,6 +1,8 @@
 import server from './api';
 
 export default {
+  target: 'server',
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'marvel-f2m',
