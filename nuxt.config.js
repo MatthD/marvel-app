@@ -75,7 +75,8 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:8080/api', // APOLLO Client
+        httpEndpoint:
+          process.env.GRAPHQL_ENDPOINT || 'http://localhost:8080/api', // APOLLO Client
       },
     },
     defaultOptions: {
