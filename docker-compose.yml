@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  web:
+    image: node:16
+    container_name: web
+    working_dir: /usr/src/app/
+    ports:
+      - '3000:3000'
+    environment:
+      MARVEL_DEV_PRIVATE_KEY: ${MARVEL_DEV_PRIVATE_KEY}
+    volumes:
+      - ./:/usr/src/app/
+    command: bash -c "yarn && yarn dev"
