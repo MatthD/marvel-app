@@ -9,6 +9,8 @@ Just a marvel character list website ;)
   OR
 - Node >= 16.0
 
+- ⚠️ be sure to put $MARVEL_DEV_PRIVATE_KEY and $MARVEL_DEV_PUBLIC_KEY in your ~/.bashrc or ~/.zshrc ⚠️
+
 ## With Docker
 
 `docker-compose up` or `docker-compose up -d`

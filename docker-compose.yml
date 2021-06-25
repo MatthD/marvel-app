@@ -8,6 +8,7 @@ services:
       - '3000:3000'
     environment:
       MARVEL_DEV_PRIVATE_KEY: ${MARVEL_DEV_PRIVATE_KEY}
+      MARVEL_DEV_PUBLIC_KEY: ${MARVEL_DEV_PUBLIC_KEY}
     volumes:
       - ./:/usr/src/app/
     command: bash -c "yarn && yarn dev"
