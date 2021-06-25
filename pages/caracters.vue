@@ -1,5 +1,5 @@
 <template>
-  <div v-infinite-scroll="showMore" infinite-scroll-distance="10">
+  <div v-infinite-scroll="showMore" infinite-scroll-distance="30">
     <section
       class="columns is-multiline caracters"
       :check-infinite-scroll="true"
@@ -7,11 +7,7 @@
       <div
         v-for="caracter in caracters"
         :key="caracter.id"
-        class="
-          card
-          column
-          is-full-mobile is-three-quarters-mobile is-one-quarter-desktop
-        "
+        class="card column is-full-mobile is-one-quarter-desktop"
         aria-id="contentIdForA11y3"
       >
         <div
@@ -58,7 +54,7 @@ export default {
     caracters: {
       query: caracters,
       prefetch: true,
-      fetchPolicy: 'cache-only',
+      fetchPolicy: 'cache-first',
       variables: {
         limit,
         start: 0,
@@ -68,6 +64,7 @@ export default {
   methods: {
     // Here we will get more caracters on infinite scroll
     showMore() {
+      // if (!caracters.lenght) return;
       this.start += 10;
       this.$apollo.queries.caracters.fetchMore({
         variables: {

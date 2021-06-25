@@ -52,9 +52,9 @@ export default {
           to: { name: 'index' },
         },
         {
-          title: 'Inspire',
+          title: 'Caracter List',
           icon: 'lightbulb',
-          to: { name: 'inspire' },
+          to: { name: 'caracters' },
         },
       ],
     };
