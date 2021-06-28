@@ -48,12 +48,12 @@ export default {
       start: 0,
       limit: 10,
       showMoreEnabled: true,
+      characters: [],
     };
   },
   apollo: {
     characters: {
       query: characters,
-      prefetch: true,
       fetchPolicy: 'cache-first',
       variables: {
         limit,

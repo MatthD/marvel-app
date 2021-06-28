@@ -1,4 +1,5 @@
 module.exports = {
+  preset: '@nuxt/test-utils',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -8,10 +9,12 @@ module.exports = {
   transform: {
     '^.+\\.js$': 'babel-jest',
     '.*\\.(vue)$': 'vue-jest',
+    '\\.(gql|graphql)$': 'jest-transform-graphql',
   },
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue',
   ],
-}
+  testEnvironment: 'jsdom',
+};

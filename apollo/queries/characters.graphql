@@ -1,5 +1,6 @@
 query characters($limit: Int, $start: Int) {
   characters(limit: $limit, start: $start) {
+    id
     name
     description
     thumbnail

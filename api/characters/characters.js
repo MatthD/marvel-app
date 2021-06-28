@@ -5,7 +5,7 @@ import {
   MARVEL_API_URL,
   MARVEL_DEV_PUBLIC_KEY,
   MARVEL_DEV_PRIVATE_KEY,
-} from './config';
+} from '../config';
 
 export const typeDefs = gql`
   type characterInfos {
@@ -38,11 +38,19 @@ export async function characters(parent, { limit, start }) {
   return sanitizedcharacters;
 }
 
-function getUsefullcharactersInfo(listOfcharacters) {
-  return listOfcharacters.map(({ id, name, description, thumbnail }) => ({
-    id,
-    name,
-    description,
-    thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
-  }));
+export function getUsefullcharactersInfo(listOfcharacters) {
+  return listOfcharacters
+    .filter(
+      (character) => typeof character === 'object' && !Array.isArray(character)
+    )
+    .map(({ id, name, description, thumbnail }) => ({
+      id,
+      name,
+      description,
+      ...{
+        thumbnail:
+          (thumbnail?.path && `${thumbnail.path}.${thumbnail.extension}`) ||
+          undefined,
+      },
+    }));
 }
