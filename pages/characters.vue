@@ -55,6 +55,7 @@ export default {
     characters: {
       query: characters,
       fetchPolicy: 'cache-first',
+      // debounce: 1600,
       variables: {
         limit,
         start: 0,

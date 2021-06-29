@@ -1,6 +1,6 @@
 import { getUsefullcharactersInfo } from './characters';
 
-describe('characters', () => {
+describe('characters - Unit', () => {
   it('Should remove unsuported data type', () => {
     const filledWithUnwantedProp = [
       'uselessstring',
