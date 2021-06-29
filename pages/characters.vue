@@ -10,27 +10,11 @@
         class="card column is-full-mobile is-one-quarter-desktop"
         aria-id="contentIdForA11y3"
       >
-        <div
-          class="card-header"
-          role="button"
-          aria-controls="contentIdForA11y3"
-        >
-          <p class="card-header-title">
-            <template>{{ character.name }}</template>
-          </p>
-          <img
-            :src="character.thumbnail"
-            :alt="character.name"
-            class="characterPicture"
-          />
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <template>
-              {{ character.description || 'no description' }}
-            </template>
-          </div>
-        </div>
+        <character-card
+          :name="character.name"
+          :description="character.description"
+          :thumbnail="character.thumbnail"
+        />
       </div>
     </section>
     <button v-if="showMoreEnabled" @click="showMore">Show more</button>
@@ -39,10 +23,13 @@
 
 <script>
 import { characters } from '~/apollo/queries/characters.graphql';
-
+import CharacterCard from '~/components/CharacterCard.vue';
 const limit = 10;
 
 export default {
+  components: {
+    CharacterCard,
+  },
   data() {
     return {
       start: 0,
@@ -55,7 +42,7 @@ export default {
     characters: {
       query: characters,
       fetchPolicy: 'cache-first',
-      // debounce: 1600,
+      debounce: 800,
       variables: {
         limit,
         start: 0,
@@ -83,10 +70,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.characterPicture {
-  max-width: 100%;
-  overflow: hidden;
-}
-</style>
